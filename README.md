@@ -3,10 +3,18 @@
 
 # spotlight
 
-**Work in progress**
+[![Travis-CI Build
+Status](https://travis-ci.org/JohnCoene/spotlight.svg?branch=master)](https://travis-ci.org/JohnCoene/spotlight)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/spotlight?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/spotlight)
 
 R wrapper to the [DBpedia Spotlight
-API](http://www.dbpedia-spotlight.org/)
+API](http://www.dbpedia-spotlight.org/).
+
+> It is a tool for automatically annotating mentions of DBpedia
+> resources in text, providing a solution for linking unstructured
+> information sources to the Linked Open Data cloud through DBpedia. –
+> DBpedia Spotlight
 
 ## Installation
 

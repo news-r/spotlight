@@ -49,3 +49,22 @@ spot.character <- function(data, text){
   lapply(data, .call_api)
 
 }
+
+#' Widen
+#' 
+#' Widen data.frame.
+#' 
+#' @param data Data.frame as returned by \code{\link{spot}}.
+#' @examples 
+#' \dontrun{
+#' spot_setup(response = "data.frame")
+#' results <- spot("This text is about France.")
+#' wide <- spot_widen(results)
+#' }
+#' 
+#' 
+#' @export
+spot_widen <- function(data){
+  
+  lapply(data, .spot_widen)
+}

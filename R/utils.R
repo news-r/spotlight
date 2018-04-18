@@ -63,3 +63,30 @@ spot_as_data_frame <- function(l){
 .parse <- function(x){
   httr::content(x)
 }
+
+.spot_rename <- function(x){
+  x <- as.data.frame(x) 
+  # split
+  type <- x[, grepl("types", names(x))]
+  notype <- x[, !grepl("types", names(x))]
+  
+  typez <- sapply(type[1,], function(x){
+    strsplit(as.character(x), ":")[[1]]
+  })
+  
+  typenames <- typez[1,]
+  types <- typez[2,]
+  
+  t <- as.data.frame(t(as.matrix(types)))
+  names(t) <- typenames
+  cbind.data.frame(notype, t)
+}
+
+.spot_widen <- function(data){
+  if(length(data$Resources) > 0){
+    col <- names(data$Resources)[grepl("types", names(data$Resources))]
+    data$Resources <- splitstackshape::cSplit(data$Resources, col, sep = ",")
+    data$Resources <- .spot_rename(data$Resources)
+  }
+  data
+}
