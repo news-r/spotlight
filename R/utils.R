@@ -77,8 +77,10 @@ spot_as_data_frame <- function(l){
   typenames <- typez[1,]
   types <- typez[2,]
   
-  t <- as.data.frame(t(as.matrix(types)))
-  names(t) <- typenames
+  t <- as.data.frame(types)
+  t$names <- typenames
+  row.names(t) <- NULL
+  names(t) <- c("entity", "type")
   cbind.data.frame(notype, t)
 }
 
