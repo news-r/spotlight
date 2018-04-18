@@ -8,4 +8,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    httr
+    httr,
+    splitstackshape,
+    plyr,
+    methods
+RoxygenNote: 6.0.1

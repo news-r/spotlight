@@ -1,13 +1,32 @@
-#' POST
-#'
-#' @rdname spot_post
+#' Spot
+#' 
+#' Spot entities.
+#' 
+#' @param data A data.frame or vector.
+#' @param text Name of column containing text.
+#' 
+#' @examples 
+#' \dontrun{
+#' data <- data.frame(
+#'   text = c(
+#'     "This text is about France.",
+#'     "This text is about Ecology."
+#'   )
+#' )
+#' 
+#' (results <- spot(data, text))
+#' }
+#' 
+#' @importFrom methods is
+#' 
+#' @rdname spot
 #' @export
-spot_post <- function(data, text) UseMethod("spot_post")
+spot <- function(data, text) UseMethod("spot")
 
-#' @rdname spot_post
-#' @method spot_post data.frame
+#' @rdname spot
+#' @method spot data.frame
 #' @export
-spot_post.data.frame <- function(data, text){
+spot.data.frame <- function(data, text){
 
   if(missing(data) || missing(text))
     stop("Missing data or text", call. = FALSE)
@@ -16,16 +35,17 @@ spot_post.data.frame <- function(data, text){
 
   data <- .get_data(data, txt)
 
-  lapply(data, .call_api())
-
+  lapply(data, .call_api)
 }
 
-#' @rdname spot_post
-#' @method spot_post character
+#' @rdname spot
+#' @method spot character
 #' @export
-spot_post.character <- function(data){
+spot.character <- function(data, text){
 
   if(missing(data))
     stop("Missing data", call. = FALSE)
+  
+  lapply(data, .call_api)
 
 }

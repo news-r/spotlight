@@ -1,0 +1,47 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+
+library(spotlight)
+```
+
+# spotlight
+
+[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/spotlight.svg?branch=master)](https://travis-ci.org/JohnCoene/spotlight) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/spotlight?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/spotlight)
+
+**Work in progress**
+
+R wrapper to the [DBpedia Spotlight API](http://www.dbpedia-spotlight.org/)
+
+## Installation
+
+You can install spotlight from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("JohnCoene/spotlight")
+```
+
+## Example
+
+```{r example}
+spot_setup(response = "data.frame")
+
+data <- data.frame(
+  text = c(
+    "This text is about France.",
+    "This text is about Ecology."
+  )
+)
+
+(results <- spot(data, text))
+```
