@@ -28,8 +28,9 @@ devtools::install_github("JohnCoene/spotlight")
 ## Example
 
 ``` r
-spot_setup(response = "data.frame")
+spot_setup(response = "data.frame") # return data.frame
 
+# Fake data to extract entities from 
 data <- data.frame(
   text = c(
     "This text is about France.",
@@ -37,7 +38,9 @@ data <- data.frame(
   )
 )
 
-(results <- spot(data, text))
+results <- spot(data, text) # get entities
+
+spot_widen(results) # Widen data.frames
 #> [[1]]
 #> [[1]]$`@text`
 #> [1] "This text is about France."
@@ -58,12 +61,12 @@ data <- data.frame(
 #> [1] "whitelist"
 #> 
 #> [[1]]$Resources
-#>                                  URI support
-#> 1 http://dbpedia.org/resource/France  256130
-#>                                                                                                              types
-#> 1 Wikidata:Q6256,Schema:Place,Schema:Country,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location,DBpedia:Country
-#>   surfaceForm offset    similarityScore percentageOfSecondRank
-#> 1      France     19 0.9978697399657521   7.244508064056807E-4
+#>                                  URI support surfaceForm offset
+#> 1 http://dbpedia.org/resource/France  256130      France     19
+#>      similarityScore percentageOfSecondRank Wikidata Schema  Schema
+#> 1 0.9978697399657521   7.244508064056807E-4    Q6256  Place Country
+#>          DBpedia DBpedia  DBpedia DBpedia
+#> 1 PopulatedPlace   Place Location Country
 #> 
 #> 
 #> [[2]]

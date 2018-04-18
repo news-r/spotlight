@@ -34,8 +34,9 @@ devtools::install_github("JohnCoene/spotlight")
 ## Example
 
 ```{r example}
-spot_setup(response = "data.frame")
+spot_setup(response = "data.frame") # return data.frame
 
+# Fake data to extract entities from 
 data <- data.frame(
   text = c(
     "This text is about France.",
@@ -43,5 +44,7 @@ data <- data.frame(
   )
 )
 
-(results <- spot(data, text))
+results <- spot(data, text) # get entities
+
+spot_widen(results) # Widen data.frames
 ```
