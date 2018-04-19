@@ -35,6 +35,9 @@ spot.data.frame <- function(data, text){
 
   data <- .get_data(data, txt)
 
+  if(getOption("SPOTLIGHT_QUIET") == FALSE)
+    message("Annotating ", length(data), " documents.")
+
   lapply(data, .call_api)
 }
 
@@ -45,6 +48,9 @@ spot.character <- function(data, text){
 
   if(missing(data))
     stop("Missing data", call. = FALSE)
+
+  if(getOption("SPOTLIGHT_QUIET") == FALSE)
+    message("Annotating ", length(data), " documents.")
 
   lapply(data, .call_api)
 
