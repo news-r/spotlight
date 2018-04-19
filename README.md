@@ -26,15 +26,17 @@ Example
 
 ``` r
 # Data to extract entities from 
-data <- data.frame(
-  text = c(
-    "The World Economic Forum's headquarters are located in Geneva.",
-    "szzza dasdazsd azzsd daawq" # garbage
-  )
+text = c(
+  "The World Economic Forum's headquarters are located in Geneva.",
+  "szzza dasdazsd azzsd daawq", # garbage
+  "" # empty document
 )
 
+# remove empty documents
+text <- spot_filter(text)
+
 # get entities
-(results <- spot(data, text))
+(results <- spot(text))
 #> [[1]]
 #> [[1]]$`@text`
 #> [1] "The World Economic Forum's headquarters are located in Geneva."
