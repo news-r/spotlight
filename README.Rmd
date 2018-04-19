@@ -20,7 +20,9 @@ library(spotlight)
 
 R wrapper to the [DBpedia Spotlight API](http://www.dbpedia-spotlight.org/). All [official documentation](https://github.com/dbpedia-spotlight/dbpedia-spotlight-model) is online.
 
-> It is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia. -- DBpedia Spotlight
+> It is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia. - DBpedia Spotlight
+
+Global options are set with `spot_set_opts`.
 
 ## Installation
 
@@ -37,14 +39,13 @@ devtools::install_github("JohnCoene/spotlight")
 # Data to extract entities from 
 data <- data.frame(
   text = c(
-    "This text is about France.",
+    "The World Economic Forum's headquarters are located in Geneva.",
     "szzza dasdazsd azzsd daawq" # garbage
   )
 )
 
-results <- spot(data, text) # get entities
-
-spot_df(results) # attempts to transform to data.frame
+# get entities
+(results <- spot(data, text))
 ```
 
 You can also send larger texts, like a 38 pages long report.

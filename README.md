@@ -7,7 +7,9 @@ spotlight
 
 R wrapper to the [DBpedia Spotlight API](http://www.dbpedia-spotlight.org/). All [official documentation](https://github.com/dbpedia-spotlight/dbpedia-spotlight-model) is online.
 
-> It is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia. -- DBpedia Spotlight
+> It is a tool for automatically annotating mentions of DBpedia resources in text, providing a solution for linking unstructured information sources to the Linked Open Data cloud through DBpedia. - DBpedia Spotlight
+
+Global options are set with `spot_set_opts`.
 
 Installation
 ------------
@@ -26,18 +28,16 @@ Example
 # Data to extract entities from 
 data <- data.frame(
   text = c(
-    "This text is about France.",
+    "The World Economic Forum's headquarters are located in Geneva.",
     "szzza dasdazsd azzsd daawq" # garbage
   )
 )
 
-results <- spot(data, text) # get entities
-
-spot_df(results) # attempts to transform to data.frame
-#> Warning: Function still in development
+# get entities
+(results <- spot(data, text))
 #> [[1]]
 #> [[1]]$`@text`
-#> [1] "This text is about France."
+#> [1] "The World Economic Forum's headquarters are located in Geneva."
 #> 
 #> [[1]]$`@confidence`
 #> [1] "0.5"
@@ -56,22 +56,50 @@ spot_df(results) # attempts to transform to data.frame
 #> 
 #> [[1]]$Resources
 #> [[1]]$Resources[[1]]
-#>                                  @URI @support                 @types
-#> 1: http://dbpedia.org/resource/France   256130         Wikidata:Q6256
-#> 2: http://dbpedia.org/resource/France   256130           Schema:Place
-#> 3: http://dbpedia.org/resource/France   256130         Schema:Country
-#> 4: http://dbpedia.org/resource/France   256130 DBpedia:PopulatedPlace
-#> 5: http://dbpedia.org/resource/France   256130          DBpedia:Place
-#> 6: http://dbpedia.org/resource/France   256130       DBpedia:Location
-#> 7: http://dbpedia.org/resource/France   256130        DBpedia:Country
-#>    @surfaceForm @offset   @similarityScore @percentageOfSecondRank
-#> 1:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 2:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 3:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 4:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 5:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 6:       France      19 0.9978697399657521    7.244508064056807E-4
-#> 7:       France      19 0.9978697399657521    7.244508064056807E-4
+#> [[1]]$Resources[[1]]$`@URI`
+#> [1] "http://dbpedia.org/resource/World_Economic_Forum"
+#> 
+#> [[1]]$Resources[[1]]$`@support`
+#> [1] "2743"
+#> 
+#> [[1]]$Resources[[1]]$`@types`
+#> [1] "Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Organisation,DBpedia:Agent"
+#> 
+#> [[1]]$Resources[[1]]$`@surfaceForm`
+#> [1] "World Economic Forum"
+#> 
+#> [[1]]$Resources[[1]]$`@offset`
+#> [1] "4"
+#> 
+#> [[1]]$Resources[[1]]$`@similarityScore`
+#> [1] "1.0"
+#> 
+#> [[1]]$Resources[[1]]$`@percentageOfSecondRank`
+#> [1] "0.0"
+#> 
+#> 
+#> [[1]]$Resources[[2]]
+#> [[1]]$Resources[[2]]$`@URI`
+#> [1] "http://dbpedia.org/resource/Geneva"
+#> 
+#> [[1]]$Resources[[2]]$`@support`
+#> [1] "15258"
+#> 
+#> [[1]]$Resources[[2]]$`@types`
+#> [1] "Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location"
+#> 
+#> [[1]]$Resources[[2]]$`@surfaceForm`
+#> [1] "Geneva"
+#> 
+#> [[1]]$Resources[[2]]$`@offset`
+#> [1] "55"
+#> 
+#> [[1]]$Resources[[2]]$`@similarityScore`
+#> [1] "0.9995874431494471"
+#> 
+#> [[1]]$Resources[[2]]$`@percentageOfSecondRank`
+#> [1] "2.384137727638211E-4"
+#> 
 #> 
 #> 
 #> 

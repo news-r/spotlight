@@ -27,19 +27,46 @@
   paste0(base, language, "/annotate")
 }
 
-.call_api <- function(x){
-
+.get_response <- function(x){
   uri <- .base_url()
 
   response <- httr::POST(
     uri,
     encode = "form",
     body = list(
-    text = as.character(x)
+      text = as.character(x)
     )
   )
 
-  httr::stop_for_status(response)
+  if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
+    message("Failed to retrieve entities\n")
+
+  response
+}
+
+.call_api <- function(x){
+
+  response <- .get_response(x)
+
+  code <- httr::status_code(response)
+
+  retries <- getOption("SPOTLIGHT_RETRY")
+  r <- 1
+  while(code != 200 && r < retries){
+
+    uri <- .base_url()
+
+    response <- .get_response(x)
+
+    code <- httr::status_code(response)
+
+    r <- r + 1
+
+    if(getOption("SPOTLIGHT_QUIET") == FALSE)
+      message("Attempt #", r, "\n")
+
+    Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
+  }
 
   results <- .parse(response)
 
