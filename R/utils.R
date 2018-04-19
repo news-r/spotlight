@@ -39,7 +39,7 @@
   )
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
-    cat(crayon::red("Failed"), "to retrieve entities")
+    cat(crayon::red("Failed"), "to retrieve entities\n")
 
   response
 }
