@@ -3,6 +3,6 @@
 S3method(spot,character)
 S3method(spot,data.frame)
 export(spot)
+export(spot_df)
 export(spot_setup)
-export(spot_widen)
 importFrom(methods,is)

@@ -34,18 +34,26 @@ devtools::install_github("JohnCoene/spotlight")
 ## Example
 
 ```{r example}
-spot_setup(response = "data.frame") # return data.frame
-
-# Fake data to extract entities from 
+# Data to extract entities from 
 data <- data.frame(
   text = c(
     "This text is about France.",
-    "This text is about Ecology.",
     "szzza dasdazsd azzsd daawq" # garbage
   )
 )
 
 results <- spot(data, text) # get entities
 
-spot_widen(results) # Widen data.frames
+spot_df(results) # attempts to transform to data.frame
+```
+
+You can also send larger texts, like a 38 pages long report.
+
+```{r example larger file, eval = FALSE}
+library(pdftools)
+uri <- "http://www3.weforum.org/docs/WEF_43923_Brazil_COMP_Lab_report_2018.pdf"
+download.file(uri, destfile = "text.pdf", mode = "wb")
+text <- pdf_text("text.pdf")
+
+results <- spot(text) # get entities
 ```
