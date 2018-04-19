@@ -39,7 +39,7 @@
   )
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
-    message("Failed to retrieve entities")
+    cat(crayon::red("Failed"), crayon::reset("to retrieve entities"))
 
   response
 }
@@ -57,7 +57,7 @@
     r <- r + 1
 
     if(getOption("SPOTLIGHT_QUIET") == FALSE)
-      message("Attempt #", r)
+      cat(crayon::reset("Attempt"), crayon::yellow(paste0("#", r)))
 
     uri <- .base_url()
 

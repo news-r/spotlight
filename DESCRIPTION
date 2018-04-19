@@ -11,5 +11,6 @@ Imports:
     httr,
     splitstackshape,
     plyr,
-    methods
+    methods,
+    crayon
 RoxygenNote: 6.0.1
