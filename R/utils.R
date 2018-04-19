@@ -54,21 +54,24 @@
   r <- 1
   while(code != 200 && r < retries){
 
+    r <- r + 1
+
+    if(getOption("SPOTLIGHT_QUIET") == FALSE)
+      message("Attempt #", r, "\n")
+
     uri <- .base_url()
 
     response <- .get_response(x)
 
     code <- httr::status_code(response)
 
-    r <- r + 1
-
-    if(getOption("SPOTLIGHT_QUIET") == FALSE)
-      message("Attempt #", r, "\n")
-
     Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
   }
 
-  results <- .parse(response)
+  if(code == 200)
+    results <- .parse(response)
+  else
+    results <- list()
 
   results
 
