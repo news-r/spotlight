@@ -39,7 +39,7 @@
   )
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
-    message("Failed to retrieve entities\n")
+    message("Failed to retrieve entities")
 
   response
 }
@@ -57,7 +57,7 @@
     r <- r + 1
 
     if(getOption("SPOTLIGHT_QUIET") == FALSE)
-      message("Attempt #", r, "\n")
+      message("Attempt #", r)
 
     uri <- .base_url()
 
