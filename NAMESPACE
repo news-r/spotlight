@@ -2,8 +2,11 @@
 
 S3method(spot,character)
 S3method(spot,data.frame)
+S3method(spot_filter,character)
+S3method(spot_filter,list)
 export(spot)
 export(spot_df)
+export(spot_filter)
 export(spot_get_opts)
 export(spot_set_opts)
 importFrom(methods,is)
