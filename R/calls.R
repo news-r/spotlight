@@ -36,7 +36,7 @@ spot.data.frame <- function(data, text){
   data <- .get_data(data, txt)
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat(crayon::reset("Annotating"), crayon::blue(length(data)), crayon::reset("documents."))
+    cat("Annotating", crayon::blue(length(data)), "documents.")
 
   lapply(data, .call_api)
 }
@@ -50,7 +50,7 @@ spot.character <- function(data, text){
     stop("Missing data", call. = FALSE)
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat(crayon::reset("Annotating"), crayon::blue(length(data)), crayon::reset("documents."))
+    cat("Annotating", crayon::blue(length(data)), "documents.")
 
   lapply(data, .call_api)
 
