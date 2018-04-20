@@ -48,7 +48,7 @@ text <- spot_filter(text)
 
 # get entities
 results <- spot(text)
-results[[1]]
+results[[1]] # print first
 ```
 
 You can also send larger texts, like a 38 pages long report.

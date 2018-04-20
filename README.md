@@ -36,93 +36,71 @@ text = c(
 text <- spot_filter(text)
 
 # get entities
-(results <- spot(text))
-#> [[1]]
-#> [[1]]$`@text`
+results <- spot(text)
+results[[1]] # print first
+#> $`@text`
 #> [1] "The World Economic Forum's headquarters are located in Geneva."
 #> 
-#> [[1]]$`@confidence`
+#> $`@confidence`
 #> [1] "0.5"
 #> 
-#> [[1]]$`@support`
+#> $`@support`
 #> [1] "0"
 #> 
-#> [[1]]$`@types`
+#> $`@types`
 #> [1] ""
 #> 
-#> [[1]]$`@sparql`
+#> $`@sparql`
 #> [1] ""
 #> 
-#> [[1]]$`@policy`
+#> $`@policy`
 #> [1] "whitelist"
 #> 
-#> [[1]]$Resources
-#> [[1]]$Resources[[1]]
-#> [[1]]$Resources[[1]]$`@URI`
+#> $Resources
+#> $Resources[[1]]
+#> $Resources[[1]]$`@URI`
 #> [1] "http://dbpedia.org/resource/World_Economic_Forum"
 #> 
-#> [[1]]$Resources[[1]]$`@support`
+#> $Resources[[1]]$`@support`
 #> [1] "2743"
 #> 
-#> [[1]]$Resources[[1]]$`@types`
+#> $Resources[[1]]$`@types`
 #> [1] "Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Organisation,DBpedia:Agent"
 #> 
-#> [[1]]$Resources[[1]]$`@surfaceForm`
+#> $Resources[[1]]$`@surfaceForm`
 #> [1] "World Economic Forum"
 #> 
-#> [[1]]$Resources[[1]]$`@offset`
+#> $Resources[[1]]$`@offset`
 #> [1] "4"
 #> 
-#> [[1]]$Resources[[1]]$`@similarityScore`
+#> $Resources[[1]]$`@similarityScore`
 #> [1] "1.0"
 #> 
-#> [[1]]$Resources[[1]]$`@percentageOfSecondRank`
+#> $Resources[[1]]$`@percentageOfSecondRank`
 #> [1] "0.0"
 #> 
 #> 
-#> [[1]]$Resources[[2]]
-#> [[1]]$Resources[[2]]$`@URI`
+#> $Resources[[2]]
+#> $Resources[[2]]$`@URI`
 #> [1] "http://dbpedia.org/resource/Geneva"
 #> 
-#> [[1]]$Resources[[2]]$`@support`
+#> $Resources[[2]]$`@support`
 #> [1] "15258"
 #> 
-#> [[1]]$Resources[[2]]$`@types`
+#> $Resources[[2]]$`@types`
 #> [1] "Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location"
 #> 
-#> [[1]]$Resources[[2]]$`@surfaceForm`
+#> $Resources[[2]]$`@surfaceForm`
 #> [1] "Geneva"
 #> 
-#> [[1]]$Resources[[2]]$`@offset`
+#> $Resources[[2]]$`@offset`
 #> [1] "55"
 #> 
-#> [[1]]$Resources[[2]]$`@similarityScore`
+#> $Resources[[2]]$`@similarityScore`
 #> [1] "0.9995874431494471"
 #> 
-#> [[1]]$Resources[[2]]$`@percentageOfSecondRank`
+#> $Resources[[2]]$`@percentageOfSecondRank`
 #> [1] "2.384137727638211E-4"
-#> 
-#> 
-#> 
-#> 
-#> [[2]]
-#> [[2]]$`@text`
-#> [1] "szzza dasdazsd azzsd daawq"
-#> 
-#> [[2]]$`@confidence`
-#> [1] "0.5"
-#> 
-#> [[2]]$`@support`
-#> [1] "0"
-#> 
-#> [[2]]$`@types`
-#> [1] ""
-#> 
-#> [[2]]$`@sparql`
-#> [1] ""
-#> 
-#> [[2]]$`@policy`
-#> [1] "whitelist"
 ```
 
 You can also send larger texts, like a 38 pages long report.
