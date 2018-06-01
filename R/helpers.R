@@ -13,6 +13,7 @@
 spot_filter <- function(text) UseMethod("spot_filter")
 
 #' @rdname spot_filter
+#' @noRd
 #' @method spot_filter list
 #' @export
 spot_filter.list <- function(text){
@@ -20,6 +21,7 @@ spot_filter.list <- function(text){
 }
 
 #' @rdname spot_filter
+#' @noRd
 #' @method spot_filter character
 #' @export
 spot_filter.character <- function(text){

@@ -2,15 +2,9 @@
 % Please edit documentation in R/helpers.R
 \name{spot_filter}
 \alias{spot_filter}
-\alias{spot_filter.list}
-\alias{spot_filter.character}
 \title{Filter empty documents.}
 \usage{
 spot_filter(text)
-
-\method{spot_filter}{list}(text)
-
-\method{spot_filter}{character}(text)
 }
 \arguments{
 \item{text}{vector or list of text.}
