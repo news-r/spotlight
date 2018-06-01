@@ -33,7 +33,7 @@ You can install spotlight from github with:
 devtools::install_github("JohnCoene/spotlight")
 ```
 
-## Example
+## Examples
 
 ```{r example}
 # Data to extract entities from 
@@ -46,9 +46,13 @@ text = c(
 # remove empty documents
 text <- spot_filter(text)
 
-# get entities
-results <- spot(text)
-results[[1]] # print first
+# Annotate
+results <- spot_annotate(text)
+
+# Annotate specific types
+places <- spot_annotate(text, types = "DBpedia:Place")
+
+str(places) # finds places
 ```
 
 You can also send larger texts, like a 38 pages long report.

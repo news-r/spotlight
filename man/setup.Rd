@@ -15,7 +15,7 @@ spot_get_opts()
 
 \item{response}{Format of response.}
 
-\item{retry}{Number of times \code{\link{spot}} should retry the API call if it fails.}
+\item{retry}{Number of times \code{\link{spot_annotate}} should retry the API call if it fails.}
 
 \item{sleep}{Pause between calls in seconds.}
 

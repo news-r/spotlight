@@ -24,18 +24,22 @@
 .base_url <- function(){
   base <- getOption("SPOTLIGHT_BASE_URL")
   language <- getOption("SPOTLIGHT_LANGUAGE")
-  paste0(base, language, "/annotate")
+  paste0(base, language)
 }
 
-.get_response <- function(x){
-  uri <- .base_url()
+.build_url <- function(endpoint = "/annotate"){
+  base <- .base_url()
+  paste0(base, endpoint)
+}
+
+.get_response <- function(x, uri, query){
+
+  query$text <- as.character(x)
 
   response <- httr::POST(
     uri,
     encode = "form",
-    body = list(
-      text = as.character(x)
-    )
+    body = query
   )
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
@@ -44,9 +48,9 @@
   response
 }
 
-.call_api <- function(x){
+.call_api <- function(x, uri, query){
 
-  response <- .get_response(x)
+  response <- .get_response(x, uri, query)
 
   code <- httr::status_code(response)
 
@@ -81,14 +85,3 @@
   httr::content(x)
 }
 
-.spot_widen <- function(data){
-  if(length(data$Resources) > 0)
-    data$Resources <- lapply(data$Resources, .spot_to_data_frame, "@types")
-  data
-}
-
-.spot_to_data_frame <- function(x, col){
-  if(length(x[[col]]))
-    x <- splitstackshape::cSplit(x, col, sep = ",", direction = "long")
-  x
-}

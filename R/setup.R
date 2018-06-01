@@ -4,7 +4,7 @@
 #'
 #' @param language Language of text.
 #' @param response Format of response.
-#' @param retry Number of times \code{\link{spot}} should retry the API call if it fails.
+#' @param retry Number of times \code{\link{spot_annotate}} should retry the API call if it fails.
 #' @param sleep Pause between calls in seconds.
 #' @param quiet Whether to print useful information in console.
 #'

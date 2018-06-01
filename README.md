@@ -21,8 +21,8 @@ You can install spotlight from github with:
 devtools::install_github("JohnCoene/spotlight")
 ```
 
-Example
--------
+Examples
+--------
 
 ``` r
 # Data to extract entities from 
@@ -35,72 +35,23 @@ text = c(
 # remove empty documents
 text <- spot_filter(text)
 
-# get entities
+# Annotate
 results <- spot(text)
-results[[1]] # print first
-#> $`@text`
-#> [1] "The World Economic Forum's headquarters are located in Geneva."
-#> 
-#> $`@confidence`
-#> [1] "0.5"
-#> 
-#> $`@support`
-#> [1] "0"
-#> 
-#> $`@types`
-#> [1] ""
-#> 
-#> $`@sparql`
-#> [1] ""
-#> 
-#> $`@policy`
-#> [1] "whitelist"
-#> 
-#> $Resources
-#> $Resources[[1]]
-#> $Resources[[1]]$`@URI`
-#> [1] "http://dbpedia.org/resource/World_Economic_Forum"
-#> 
-#> $Resources[[1]]$`@support`
-#> [1] "2743"
-#> 
-#> $Resources[[1]]$`@types`
-#> [1] "Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Organisation,DBpedia:Agent"
-#> 
-#> $Resources[[1]]$`@surfaceForm`
-#> [1] "World Economic Forum"
-#> 
-#> $Resources[[1]]$`@offset`
-#> [1] "4"
-#> 
-#> $Resources[[1]]$`@similarityScore`
-#> [1] "1.0"
-#> 
-#> $Resources[[1]]$`@percentageOfSecondRank`
-#> [1] "0.0"
-#> 
-#> 
-#> $Resources[[2]]
-#> $Resources[[2]]$`@URI`
-#> [1] "http://dbpedia.org/resource/Geneva"
-#> 
-#> $Resources[[2]]$`@support`
-#> [1] "15258"
-#> 
-#> $Resources[[2]]$`@types`
-#> [1] "Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location"
-#> 
-#> $Resources[[2]]$`@surfaceForm`
-#> [1] "Geneva"
-#> 
-#> $Resources[[2]]$`@offset`
-#> [1] "55"
-#> 
-#> $Resources[[2]]$`@similarityScore`
-#> [1] "0.9995874431494471"
-#> 
-#> $Resources[[2]]$`@percentageOfSecondRank`
-#> [1] "2.384137727638211E-4"
+
+# get resources
+spot_resources(results)
+#>                                                URI support
+#> 1 http://dbpedia.org/resource/World_Economic_Forum    2743
+#>                                                                                                                  types
+#> 1 Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Organisation,DBpedia:Agent
+#>            surfaceForm offset similarityScore percentageOfSecondRank
+#> 1 World Economic Forum      4             1.0                    0.0
+#>                                  URI support
+#> 1 http://dbpedia.org/resource/Geneva   15258
+#>                                                                                                    types
+#> 1 Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location
+#>   surfaceForm offset    similarityScore percentageOfSecondRank
+#> 1      Geneva     55 0.9995874431494471   2.384137727638211E-4
 ```
 
 You can also send larger texts, like a 38 pages long report.
