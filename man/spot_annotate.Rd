@@ -2,18 +2,10 @@
 % Please edit documentation in R/calls.R
 \name{spot_annotate}
 \alias{spot_annotate}
-\alias{spot_annotate.data.frame}
-\alias{spot_annotate.character}
 \title{Annotate}
 \usage{
 spot_annotate(text, url = NULL, confidence = NULL, support = NULL,
   types = NULL, sparql = NULL, policy = NULL)
-
-\method{spot_annotate}{data.frame}(text, url = NULL, confidence = NULL,
-  support = NULL, types = NULL, sparql = NULL, policy = NULL)
-
-\method{spot_annotate}{character}(text, url = NULL, confidence = NULL,
-  support = NULL, types = NULL, sparql = NULL, policy = NULL)
 }
 \arguments{
 \item{text}{A data.frame containing a column named "text" or a vector of class character.}

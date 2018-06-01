@@ -30,6 +30,7 @@
 spot_annotate <- function(text, url = NULL, confidence = NULL, support = NULL, types = NULL, sparql = NULL, policy = NULL) UseMethod("spot_annotate")
 
 #' @rdname spot_annotate
+#' @noRd
 #' @method spot_annotate data.frame
 #' @export
 spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, support = NULL,
@@ -58,6 +59,7 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
 }
 
 #' @rdname spot_annotate
+#' @noRd
 #' @method spot_annotate character
 #' @export
 spot_annotate.character <- function(text, url = NULL, confidence = NULL, support = NULL,
@@ -105,6 +107,7 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
 spot_spot <- function(text, url = NULL, confidence = NULL, support = NULL, types = NULL, sparql = NULL, policy = NULL) UseMethod("spot_spot")
 
 #' @rdname spot_spot
+#' @noRd
 #' @method spot_spot data.frame
 #' @export
 spot_spot.data.frame <- function(text, url = NULL, confidence = NULL, support = NULL,
@@ -133,6 +136,7 @@ spot_spot.data.frame <- function(text, url = NULL, confidence = NULL, support = 
 }
 
 #' @rdname spot_spot
+#' @noRd
 #' @method spot_spot character
 #' @export
 spot_spot.character <- function(text, url = NULL, confidence = NULL, support = NULL,
@@ -180,6 +184,7 @@ spot_spot.character <- function(text, url = NULL, confidence = NULL, support = N
 spot_candidate <- function(text, url = NULL, confidence = NULL, support = NULL, types = NULL, sparql = NULL, policy = NULL) UseMethod("spot_spot")
 
 #' @rdname spot_candidate
+#' @noRd
 #' @method spot_candidate data.frame
 #' @export
 spot_candidate.data.frame <- function(text, url = NULL, confidence = NULL, support = NULL,
@@ -208,6 +213,7 @@ spot_candidate.data.frame <- function(text, url = NULL, confidence = NULL, suppo
 }
 
 #' @rdname spot_candidate
+#' @noRd
 #' @method spot_candidate character
 #' @export
 spot_candidate.character <- function(text, url = NULL, confidence = NULL, support = NULL,

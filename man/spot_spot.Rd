@@ -2,18 +2,10 @@
 % Please edit documentation in R/calls.R
 \name{spot_spot}
 \alias{spot_spot}
-\alias{spot_spot.data.frame}
-\alias{spot_spot.character}
 \title{Spot}
 \usage{
 spot_spot(text, url = NULL, confidence = NULL, support = NULL,
   types = NULL, sparql = NULL, policy = NULL)
-
-\method{spot_spot}{data.frame}(text, url = NULL, confidence = NULL,
-  support = NULL, types = NULL, sparql = NULL, policy = NULL)
-
-\method{spot_spot}{character}(text, url = NULL, confidence = NULL,
-  support = NULL, types = NULL, sparql = NULL, policy = NULL)
 }
 \arguments{
 \item{text}{A data.frame containing a column named "text" or a vector of class character.}
