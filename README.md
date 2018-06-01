@@ -39,14 +39,14 @@ results <- spot_annotate(text)
 
 # Annotate specific types
 places <- spot_annotate(text, types = "DBpedia:Place")
-(places <- spot_resources(places)) # simplifies => extracts resources
-#>                                  URI support
-#> 1 http://dbpedia.org/resource/Geneva   15258
-#>                                                                                                    types
-#> 1 Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location
-#>   surfaceForm offset    similarityScore percentageOfSecondRank
-#> 1      Geneva     55 0.9995874431494471   2.384137727638211E-4
+places <- spot_resources(places) # simplifies => extracts resources
+
+knitr::kable(places)
 ```
+
+| URI                                  | support | types                                                                                                  | surfaceForm | offset | similarityScore    | percentageOfSecondRank |
+|:-------------------------------------|:--------|:-------------------------------------------------------------------------------------------------------|:------------|:-------|:-------------------|:-----------------------|
+| <http://dbpedia.org/resource/Geneva> | 15258   | Wikidata:Q486972,Schema:Place,DBpedia:Settlement,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location | Geneva      | 55     | 0.9995874431494471 | 2.384137727638211E-4   |
 
 You can also send larger texts, like a 38 pages long report.
 

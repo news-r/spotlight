@@ -49,7 +49,9 @@ results <- spot_annotate(text)
 
 # Annotate specific types
 places <- spot_annotate(text, types = "DBpedia:Place")
-(places <- spot_resources(places)) # simplifies => extracts resources
+places <- spot_resources(places) # simplifies => extracts resources
+
+knitr::kable(places)
 ```
 
 You can also send larger texts, like a 38 pages long report.
