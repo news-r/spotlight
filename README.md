@@ -1,5 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 spotlight
 =========
 
@@ -36,16 +35,11 @@ text = c(
 text <- spot_filter(text)
 
 # Annotate
-results <- spot(text)
+results <- spot_annotate(text)
 
-# get resources
-spot_resources(results)
-#>                                                URI support
-#> 1 http://dbpedia.org/resource/World_Economic_Forum    2743
-#>                                                                                                                  types
-#> 1 Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Organisation,DBpedia:Agent
-#>            surfaceForm offset similarityScore percentageOfSecondRank
-#> 1 World Economic Forum      4             1.0                    0.0
+# Annotate specific types
+places <- spot_annotate(text, types = "DBpedia:Place")
+(places <- spot_resources(places)) # simplifies => extracts resources
 #>                                  URI support
 #> 1 http://dbpedia.org/resource/Geneva   15258
 #>                                                                                                    types
