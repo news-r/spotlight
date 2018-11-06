@@ -48,11 +48,12 @@
   response
 }
 
-.call_api <- function(x, uri, query){
+.call_api <- function(x, uri, query, pb){
 
   response <- .get_response(x, uri, query)
 
   code <- httr::status_code(response)
+  pb$tick()
 
   retries <- getOption("SPOTLIGHT_RETRY")
   r <- 1
@@ -65,7 +66,7 @@
 
     uri <- .base_url()
 
-    response <- .get_response(x)
+    response <- .get_response(x, uri, query)
 
     code <- httr::status_code(response)
 
@@ -84,4 +85,3 @@
 .parse <- function(x){
   httr::content(x)
 }
-

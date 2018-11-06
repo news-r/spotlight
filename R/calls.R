@@ -39,12 +39,10 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
   if(missing(text))
     stop("Missing text", call. = FALSE)
 
-  #txt <- deparse(substitute(text))
-
   text <- .get_data(text, "text")
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(length(text)), "documents.")
+    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.")
 
   query <- list(
     url = url,
@@ -55,7 +53,11 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url(), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent annotating document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
 }
 
 #' @rdname spot_annotate
@@ -69,7 +71,7 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
     stop("Missing text", call. = FALSE)
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(length(text)), "documents.")
+    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.")
 
   query <- list(
     url = url,
@@ -80,12 +82,16 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url(), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent annotating document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
 
 }
 
 #' Spot
-#' 
+#'
 #' Spot urls.
 #'
 #' @inheritParams spot_annotate
@@ -121,7 +127,7 @@ spot_spot.data.frame <- function(text, url = NULL, confidence = NULL, support = 
   text <- .get_data(text, "text")
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(length(text)), "documents.\n")
+    cat("Spotting", crayon::blue(length(text)), "documents.\n")
 
   query <- list(
     url = url,
@@ -132,7 +138,11 @@ spot_spot.data.frame <- function(text, url = NULL, confidence = NULL, support = 
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url("/spot"), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent spotting document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url("/spot"), query = query, pb = pb)
 }
 
 #' @rdname spot_spot
@@ -157,12 +167,16 @@ spot_spot.character <- function(text, url = NULL, confidence = NULL, support = N
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url("/spot"), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent spotting document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url("/spot"), query = query, pb = pb)
 
 }
 
 #' Candidates
-#' 
+#'
 #' Find candidate urls.
 #'
 #' @inheritParams spot_annotate
@@ -198,7 +212,7 @@ spot_candidate.data.frame <- function(text, url = NULL, confidence = NULL, suppo
   text <- .get_data(text, "text")
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(length(text)), "documents.\n")
+    cat("Finding candidates for", crayon::blue(length(text)), "documents.\n")
 
   query <- list(
     url = url,
@@ -209,7 +223,11 @@ spot_candidate.data.frame <- function(text, url = NULL, confidence = NULL, suppo
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url("/spot"), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url("/spot"), query = query, pb = pb)
 }
 
 #' @rdname spot_candidate
@@ -223,10 +241,10 @@ spot_candidate.character <- function(text, url = NULL, confidence = NULL, suppor
     stop("Missing text", call. = FALSE)
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Spotting", crayon::blue(length(text)), "documents.\n")
+    cat("Finding candidates for", crayon::blue(length(text)), "documents.\n")
 
   query <- list(
-    url = url, 
+    url = url,
     confidence = confidence,
     support = support,
     types = types,
@@ -234,6 +252,10 @@ spot_candidate.character <- function(text, url = NULL, confidence = NULL, suppor
     policy = policy
   )
 
-  lapply(text, .call_api, uri = .build_url("/candidates"), query = query)
+  pb <- progress::progress_bar$new(
+    total = length(text),
+    format = ":percent document: :current [:bar] eta: :eta"
+  )
+  lapply(text, .call_api, uri = .build_url("/candidates"), query = query, pb = pb)
 
 }

@@ -13,5 +13,7 @@ Imports:
     plyr,
     methods,
     crayon,
-    purrr
-RoxygenNote: 6.0.1
+    purrr,
+    progress
+RoxygenNote: 6.1.0
+Remotes: r-lib/progress

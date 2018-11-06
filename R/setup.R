@@ -39,7 +39,7 @@
 #'
 #' @rdname setup
 #' @export
-spot_set_opts <- function(language = NULL, response = NULL, retry = NULL, sleep = NULL, quiet = NULL){
+spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep = 1, quiet = !interactive()){
 
   if(!is.null(language)){
     .check_language(language)
