@@ -4,7 +4,7 @@
     SPOTLIGHT_LANGUAGE = "en",
     SPOTLIGHT_RESPONSE = "list",
     SPOTLIGHT_RETRY = 25,
-    SPOTLIGHT_SLEEP = 1,
+    SPOTLIGHT_SLEEP = 3,
     SPOTLIGHT_QUIET = !interactive()
   )
 }

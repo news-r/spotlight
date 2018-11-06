@@ -6,7 +6,7 @@
 \title{Setup}
 \usage{
 spot_set_opts(language = "en", response = "list", retry = 25,
-  sleep = 1, quiet = !interactive())
+  sleep = 3, quiet = !interactive())
 
 spot_get_opts()
 }
