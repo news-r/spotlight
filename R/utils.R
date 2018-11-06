@@ -73,6 +73,8 @@
     Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
   }
 
+  Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
+
   if(code == 200)
     results <- .parse(response)
   else
