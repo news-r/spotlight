@@ -14,7 +14,7 @@ library(spotlight)
 
 # spotlight
 
-[![Travis-CI Build Status](https://travis-ci.org/JohnCoene/spotlight.svg?branch=master)](https://travis-ci.org/JohnCoene/spotlight) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/spotlight?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/spotlight)
+[![Travis build status](https://travis-ci.org/news-r/spotlight.svg?branch=master)](https://travis-ci.org/news-r/spotlight) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/spotlight?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/spotlight)
 
 R wrapper to the [DBpedia Spotlight API](http://www.dbpedia-spotlight.org/). All [official documentation](https://github.com/dbpedia-spotlight/dbpedia-spotlight-model) is online.
 
@@ -56,7 +56,7 @@ knitr::kable(places)
 
 You can also send larger texts, like a 38 pages long report.
 
-```{r example larger file, eval = FALSE}
+```r
 library(pdftools)
 uri <- "http://www3.weforum.org/docs/WEF_43923_Brazil_COMP_Lab_report_2018.pdf"
 download.file(uri, destfile = "text.pdf", mode = "wb")
