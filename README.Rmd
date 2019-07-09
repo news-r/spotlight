@@ -1,5 +1,7 @@
 ---
-output: github_document
+output: 
+  github_document:
+    html_preview: false
 ---
 
 ```{r, echo = FALSE}
@@ -26,17 +28,19 @@ Global options are set with `spot_set_opts`.
 
 You can install spotlight from github with:
 
-```{r gh-installation, eval = FALSE}
+```r
 # install.packages("devtools")
-devtools::install_github("JohnCoene/spotlight")
+devtools::install_github("news-r/spotlight")
 ```
 
 ## Examples
 
 ```{r example}
+library(spotlight)
+
 # Data to extract entities from 
 text = c(
-  "The World Economic Forum's headquarters are located in Geneva.",
+  "Donald Trump is probably in Washington DC.",
   "szzza dasdazsd azzsd daawq", # garbage
   "" # empty document
 )
@@ -48,10 +52,7 @@ text <- spot_filter(text)
 results <- spot_annotate(text)
 
 # Annotate specific types
-places <- spot_annotate(text, types = "DBpedia:Place")
-places <- spot_resources(places) # simplifies => extracts resources
-
-knitr::kable(places)
+(places <- spot_annotate(text, types = "DBpedia:Place"))
 ```
 
 You can also send larger texts, like a 38 pages long report.

@@ -42,7 +42,7 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
   text <- .get_data(text, "text")
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.")
+    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.\n")
 
   query <- list(
     url = url,
@@ -71,7 +71,7 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
     stop("Missing text", call. = FALSE)
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE)
-    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.")
+    cat("Annotating", crayon::blue(prettyNum(length(text), big.mark = ",")), "documents.\n")
 
   query <- list(
     url = url,
