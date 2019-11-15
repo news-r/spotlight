@@ -52,16 +52,7 @@ text <- spot_filter(text)
 results <- spot_annotate(text)
 
 # Annotate specific types
-(places <- spot_annotate(text, types = "DBpedia:Place"))
-```
+places <- spot_annotate(text, types = "DBpedia:Place")
 
-You can also send larger texts, like a 38 pages long report.
-
-```r
-library(pdftools)
-uri <- "http://www3.weforum.org/docs/WEF_43923_Brazil_COMP_Lab_report_2018.pdf"
-download.file(uri, destfile = "text.pdf", mode = "wb")
-text <- pdf_text("text.pdf")
-
-results <- spot(text) # get entities
+knitr::kable(places)
 ```

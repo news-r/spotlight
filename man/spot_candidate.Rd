@@ -4,8 +4,15 @@
 \alias{spot_candidate}
 \title{Candidates}
 \usage{
-spot_candidate(text, url = NULL, confidence = NULL, support = NULL,
-  types = NULL, sparql = NULL, policy = NULL)
+spot_candidate(
+  text,
+  url = NULL,
+  confidence = NULL,
+  support = NULL,
+  types = NULL,
+  sparql = NULL,
+  policy = NULL
+)
 }
 \arguments{
 \item{text}{A data.frame containing a column named "text" or a vector of class character.}

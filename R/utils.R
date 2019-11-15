@@ -1,3 +1,15 @@
+globalVariables(
+  c(
+    "confidence",
+    "id",
+    "resource_offset",
+    "resource_percentageOfSecondRank",
+    "resource_similarityScore",
+    "resource_support",
+    "support"
+  )
+)
+
 
 .valid_languages <- function(){
   c("en", "de", "nl", "fr", "it", "ru", "es", "pt", "hu", "tr")

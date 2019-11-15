@@ -10,6 +10,7 @@
 #' @param sparql SPARQL filtering.
 #' @param policy (whitelist) select all entities that have the same type; (blacklist) -
 #' select all entities that have not the same type.
+#' @param tidy If \code{TRUE} returns a tibble by using \code{\link{tidy_annotations}}.
 #'
 #' @examples
 #' \dontrun{
@@ -27,14 +28,15 @@
 #'
 #' @rdname spot_annotate
 #' @export
-spot_annotate <- function(text, url = NULL, confidence = NULL, support = NULL, types = NULL, sparql = NULL, policy = NULL) UseMethod("spot_annotate")
+spot_annotate <- function(text, url = NULL, confidence = NULL, support = NULL, 
+  types = NULL, sparql = NULL, policy = NULL, tidy = TRUE) UseMethod("spot_annotate")
 
 #' @rdname spot_annotate
 #' @noRd
 #' @method spot_annotate data.frame
 #' @export
 spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, support = NULL,
-  types = NULL, sparql = NULL, policy = NULL){
+  types = NULL, sparql = NULL, policy = NULL, tidy = TRUE){
 
   if(missing(text))
     stop("Missing text", call. = FALSE)
@@ -57,7 +59,13 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
     total = length(text),
     format = ":percent annotating document: :current [:bar] eta: :eta"
   )
-  lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
+  
+  data <- lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
+
+  if(tidy)
+    data <- tidy_annotations(data)
+
+  return(data)
 }
 
 #' @rdname spot_annotate
@@ -65,7 +73,7 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
 #' @method spot_annotate character
 #' @export
 spot_annotate.character <- function(text, url = NULL, confidence = NULL, support = NULL,
-                                    types = NULL, sparql = NULL, policy = NULL){
+  types = NULL, sparql = NULL, policy = NULL, tidy = TRUE){
 
   if(missing(text))
     stop("Missing text", call. = FALSE)
@@ -86,8 +94,12 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
     total = length(text),
     format = ":percent annotating document: :current [:bar] eta: :eta"
   )
-  lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
+  data <- lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
 
+  if(tidy)
+    data <- tidy_annotations(data)
+
+  return(data)
 }
 
 #' Spot

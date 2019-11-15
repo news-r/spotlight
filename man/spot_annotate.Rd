@@ -4,8 +4,16 @@
 \alias{spot_annotate}
 \title{Annotate}
 \usage{
-spot_annotate(text, url = NULL, confidence = NULL, support = NULL,
-  types = NULL, sparql = NULL, policy = NULL)
+spot_annotate(
+  text,
+  url = NULL,
+  confidence = NULL,
+  support = NULL,
+  types = NULL,
+  sparql = NULL,
+  policy = NULL,
+  tidy = TRUE
+)
 }
 \arguments{
 \item{text}{A data.frame containing a column named "text" or a vector of class character.}
@@ -22,6 +30,8 @@ spot_annotate(text, url = NULL, confidence = NULL, support = NULL,
 
 \item{policy}{(whitelist) select all entities that have the same type; (blacklist) -
 select all entities that have not the same type.}
+
+\item{tidy}{If \code{TRUE} returns a tibble by using \code{\link{tidy_annotations}}.}
 }
 \description{
 Annotate entities.

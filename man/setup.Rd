@@ -5,8 +5,13 @@
 \alias{spot_get_opts}
 \title{Setup}
 \usage{
-spot_set_opts(language = "en", response = "list", retry = 25,
-  sleep = 3, quiet = !interactive())
+spot_set_opts(
+  language = "en",
+  response = "list",
+  retry = 25,
+  sleep = 0.5,
+  quiet = !interactive()
+)
 
 spot_get_opts()
 }
