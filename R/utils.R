@@ -55,7 +55,7 @@ globalVariables(
   )
 
   if(getOption("SPOTLIGHT_QUIET") == FALSE && httr::status_code(response) != 200)
-    cat(crayon::red("Failed"), "to retrieve entities\n")
+    cat(crayon::red("failed"), "to retrieve entities\n")
 
   response
 }
@@ -74,7 +74,7 @@ globalVariables(
     r <- r + 1
 
     if(getOption("SPOTLIGHT_QUIET") == FALSE)
-      cat("Attempt", crayon::yellow(paste0("#", r)))
+      cat("Attempt ", crayon::yellow(paste0("#", r)))
 
     uri <- .base_url()
 
