@@ -49,10 +49,7 @@ text = c(
 text <- spot_filter(text)
 
 # Annotate
-results <- spot_annotate(text)
-
-# Annotate specific types
-places <- spot_annotate(text)
+places <- spot_annotate(text, types = "DBpedia:Place")
 
 knitr::kable(places)
 ```

@@ -43,20 +43,13 @@ text = c(
 text <- spot_filter(text)
 
 # Annotate
-results <- spot_annotate(text)
+places <- spot_annotate(text, types = "DBpedia:Place")
 #> Annotating 2 documents.
-#> 100% annotating document: 2 [==================================] eta: 0s
-
-# Annotate specific types
-places <- spot_annotate(text)
-#> Annotating 2 documents.
-#> 100% annotating document: 2 [==================================] eta: 0s
+#> 100% annotating document: 2 [====================================================================] eta: 0s
 
 knitr::kable(places)
 ```
 
-| text                                       | confidence | support | types | sparql | policy    | resource\_URI                                    | resource\_support | resource\_types                                                                                                                                            | resource\_surfaceForm | resource\_offset | resource\_similarityScore | resource\_percentageOfSecondRank |
-| :----------------------------------------- | ---------: | ------: | :---- | :----- | :-------- | :----------------------------------------------- | ----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | ---------------: | ------------------------: | -------------------------------: |
-| Donald Trump is probably in Washington DC. |        0.5 |       0 |       |        | whitelist | <http://dbpedia.org/resource/Donald_Trump>       |             14792 | <Http://xmlns.com/foaf/0.1/Person,Wikidata:Q5,Wikidata:Q24229398,Wikidata:Q215627,DUL:NaturalPerson,DUL:Agent,Schema:Person,DBpedia:Person,DBpedia:Agent>  | Donald Trump          |                0 |                 0.9997958 |                        0.0001923 |
-| Donald Trump is probably in Washington DC. |        0.5 |       0 |       |        | whitelist | <http://dbpedia.org/resource/Washington_(state)> |             43066 | Wikidata:Q3455524,Schema:Place,Schema:AdministrativeArea,DBpedia:Region,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location,DBpedia:AdministrativeRegion | Washington            |               28 |                 0.5234317 |                        0.4408709 |
-| Donald Trump is probably in Washington DC. |        0.5 |       0 |       |        | whitelist | <http://dbpedia.org/resource/DC_Comics>          |             18800 | Wikidata:Q43229,Wikidata:Q24229398,DUL:SocialPerson,DUL:Agent,Schema:Organization,DBpedia:Publisher,DBpedia:Organisation,DBpedia:Company,DBpedia:Agent     | DC                    |               39 |                 0.7179406 |                        0.1938080 |
+|                    text                    | confidence | support |     types     | sparql | policy    | resource\_URI                                    | resource\_support | resource\_types                                                                                                                                            | resource\_surfaceForm | resource\_offset | resource\_similarityScore | resource\_percentageOfSecondRank |
+| :----------------------------------------: | ---------: | ------: | :-----------: | :----- | :-------- | :----------------------------------------------- | ----------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | ---------------: | ------------------------: | -------------------------------: |
+| Donald Trump is probably in Washington DC. |        0.5 |       0 | DBpedia:Place |        | whitelist | <http://dbpedia.org/resource/Washington_(state)> |             43066 | Wikidata:Q3455524,Schema:Place,Schema:AdministrativeArea,DBpedia:Region,DBpedia:PopulatedPlace,DBpedia:Place,DBpedia:Location,DBpedia:AdministrativeRegion | Washington            |               28 |                 0.5234317 |                        0.4408709 |

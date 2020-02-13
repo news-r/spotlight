@@ -74,7 +74,7 @@ globalVariables(
     r <- r + 1
 
     if(getOption("SPOTLIGHT_QUIET") == FALSE)
-      cat("Attempt ", crayon::yellow(paste0("#", r)))
+      cat("Attempt ", crayon::yellow(paste0("#", r), "\n"))
 
     uri <- .base_url()
 
