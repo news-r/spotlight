@@ -82,15 +82,16 @@ globalVariables(
 
     code <- httr::status_code(response)
 
-    Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
+    if(r > 2)
+      Sys.sleep(getOption("SPOTLIGHT_SLEEP_IF_FAIL"))
+    else
+      Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
   }
-
-  Sys.sleep(getOption("SPOTLIGHT_SLEEP"))
 
   if(code == 200)
     results <- .parse(response)
   else
-    results <- list()
+    results <- NULL
 
   results
 

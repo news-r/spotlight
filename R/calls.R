@@ -60,7 +60,7 @@ spot_annotate.data.frame <- function(text, url = NULL, confidence = NULL, suppor
     format = ":percent annotating document: :current [:bar] eta: :eta"
   )
   
-  data <- lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
+  data <- purrr::map(text, .call_api, uri = .build_url(), query = query, pb = pb)
 
   if(tidy)
     data <- tidy_annotations(data)
@@ -94,7 +94,7 @@ spot_annotate.character <- function(text, url = NULL, confidence = NULL, support
     total = length(text),
     format = ":percent annotating document: :current [:bar] eta: :eta"
   )
-  data <- lapply(text, .call_api, uri = .build_url(), query = query, pb = pb)
+  data <- purrr::map(text, .call_api, uri = .build_url(), query = query, pb = pb)
 
   if(tidy)
     data <- tidy_annotations(data)

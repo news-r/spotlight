@@ -10,6 +10,7 @@ spot_set_opts(
   response = "list",
   retry = 25,
   sleep = 0.5,
+  sleep_if_fail = 3,
   quiet = !interactive()
 )
 
@@ -23,6 +24,8 @@ spot_get_opts()
 \item{retry}{Number of times \code{\link{spot_annotate}} should retry the API call if it fails.}
 
 \item{sleep}{Pause between calls in seconds.}
+
+\item{sleep_if_fail}{Pause call attempts in seconds.}
 
 \item{quiet}{Whether to print useful information in console.}
 }

@@ -6,6 +6,7 @@
 #' @param response Format of response.
 #' @param retry Number of times \code{\link{spot_annotate}} should retry the API call if it fails.
 #' @param sleep Pause between calls in seconds.
+#' @param sleep_if_fail Pause call attempts in seconds.
 #' @param quiet Whether to print useful information in console.
 #'
 #' @section Languages:
@@ -39,7 +40,7 @@
 #'
 #' @rdname setup
 #' @export
-spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep = .5, quiet = !interactive()){
+spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep = .5, sleep_if_fail = 1, quiet = !interactive()){
 
   if(!is.null(language)){
     .check_language(language)
@@ -61,6 +62,10 @@ spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep 
 
   if(!is.null(quiet)){
     options(SPOTLIGHT_QUIET = quiet)
+  }
+
+  if(!is.null(sleep_if_fail)){
+    options(SPOTLIGHT_SLEEP_IF_FAIL = sleep_if_fail)
   }
 }
 

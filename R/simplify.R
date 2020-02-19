@@ -24,11 +24,22 @@
 #' @export
 tidy_annotations <- function(data){
   docs <- 1:length(data)
-  base <- purrr::map2_dfr(data, docs, function(x, y) {
+
+  data <- purrr::map2(data, docs, function(x, y){
+    if(!is.null(x))
+      x$id <- y
+    return(x)
+  }) %>% 
+    purrr::keep(function(x){
+      !is.null(x)
+    }) 
+
+  base <- purrr::map_dfr(data, function(x) {
     x$Resources <- NULL
-    x$id <- y
     tibble::as_tibble(x)
   }) 
+
+  docs <- unique(base$id)
 
   res <- purrr::map(data, "Resources") %>% 
     purrr::map2_dfr(docs, function(x, y){
@@ -46,8 +57,7 @@ tidy_annotations <- function(data){
   nms <- paste0("resource_", nms)
   names(res) <- nms
 
-  res <- dplyr::inner_join(base, res, by = c("id" = "resource_id")) %>% 
-    dplyr::select(-id)
+  res <- dplyr::inner_join(base, res, by = c("id" = "resource_id"))
   
   names(res) <- clean_names(names(res))
   res %>% 

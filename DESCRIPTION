@@ -17,5 +17,5 @@ Imports:
     magrittr,
     dplyr,
     tibble
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 Remotes: r-lib/progress
