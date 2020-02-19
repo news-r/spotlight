@@ -35,11 +35,14 @@ globalVariables(
 
 .base_url <- function(){
   base <- getOption("SPOTLIGHT_BASE_URL")
-  language <- getOption("SPOTLIGHT_LANGUAGE")
-  paste0(base, language)
+  if(base == "http://api.dbpedia-spotlight.org/"){
+    language <- getOption("SPOTLIGHT_LANGUAGE")
+    base <- paste0(base, language, "/")
+  }
+  base
 }
 
-.build_url <- function(endpoint = "/annotate"){
+.build_url <- function(endpoint = "annotate"){
   base <- .base_url()
   paste0(base, endpoint)
 }

@@ -8,6 +8,7 @@
 #' @param sleep Pause between calls in seconds.
 #' @param sleep_if_fail Pause call attempts in seconds.
 #' @param quiet Whether to print useful information in console.
+#' @param base_url URL to ping if you have self-deployed spotlight.
 #'
 #' @section Languages:
 #' \itemize{
@@ -40,7 +41,7 @@
 #'
 #' @rdname setup
 #' @export
-spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep = .5, sleep_if_fail = 1, quiet = !interactive()){
+spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep = .5, sleep_if_fail = 1, base_url = NULL, quiet = !interactive()){
 
   if(!is.null(language)){
     .check_language(language)
@@ -67,6 +68,9 @@ spot_set_opts <- function(language = "en", response = "list", retry = 25, sleep 
   if(!is.null(sleep_if_fail)){
     options(SPOTLIGHT_SLEEP_IF_FAIL = sleep_if_fail)
   }
+
+  if(!is.null(base_url))
+    options(SPOTLIGHT_BASE_URL = base_url)
 }
 
 #' @rdname setup

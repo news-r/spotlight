@@ -39,7 +39,7 @@ tidy_annotations <- function(data){
     tibble::as_tibble(x)
   }) 
 
-  docs <- unique(base$id)
+  docs <- 1:length(data)
 
   res <- purrr::map(data, "Resources") %>% 
     purrr::map2_dfr(docs, function(x, y){

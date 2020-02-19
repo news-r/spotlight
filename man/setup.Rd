@@ -10,7 +10,8 @@ spot_set_opts(
   response = "list",
   retry = 25,
   sleep = 0.5,
-  sleep_if_fail = 3,
+  sleep_if_fail = 1,
+  base_url = NULL,
   quiet = !interactive()
 )
 
@@ -26,6 +27,8 @@ spot_get_opts()
 \item{sleep}{Pause between calls in seconds.}
 
 \item{sleep_if_fail}{Pause call attempts in seconds.}
+
+\item{base_url}{URL to ping if you have self-deployed spotlight.}
 
 \item{quiet}{Whether to print useful information in console.}
 }
