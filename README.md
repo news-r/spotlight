@@ -16,7 +16,7 @@ is online.
 > information sources to the Linked Open Data cloud through DBpedia. -
 > DBpedia Spotlight
 
-Global options are set with `spot_set_opts`.
+Global options are set with `spot_set_opts`. If you want to extensively use dbpedia you are encouraged to deploy [spotlight-docker](https://github.com/dbpedia-spotlight/spotlight-docker) on your own server then point to it with the `base_url` argument in `spot_set_opts`.
 
 ## Installation
 
