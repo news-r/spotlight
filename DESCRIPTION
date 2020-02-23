@@ -1,6 +1,6 @@
 Package: spotlight
 Title: Wrapper for Dbpedia Spotlight API
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre")), person(family = "news-r", role = "cph"))
 Description: Wrapper for dbpedia spotlight api.
 License: MIT + file LICENSE
